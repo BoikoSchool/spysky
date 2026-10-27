@@ -1,0 +1,759 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Списки на GitHub Pages</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Apple-style product page — frosted sticky subnav, alternating full-bleed bands, centered 980px column, soft cards */
+:root{
+  --bg:#ffffff; --bg-alt:#f5f5f7; --card:#ffffff; --card-alt:#fbfbfd;
+  --fg:#1d1d1f; --fg-2:#6e6e73; --line:#d2d2d7;
+  --accent:#0071e3; --accent-ink:#ffffff; --accent-soft:#e8f2fd;
+  --ok:#1a7f37; --ok-soft:#e6f4ea; --bad:#c9341f; --bad-soft:#fdecea;
+  --code-bg:#1d1d1f; --code-fg:#f5f5f7; --c-tag:#ff7ab2; --c-attr:#ffa14f; --c-val:#9cdcfe; --c-com:#8e8e93;
+  --nav:rgba(251,251,253,.8);
+  --f-display:"SF Pro Display",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-text:"SF Pro Text",-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:"SF Mono",ui-monospace,Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000000; --bg-alt:#111113; --card:#1c1c1e; --card-alt:#232326;
+  --fg:#f5f5f7; --fg-2:#a1a1a6; --line:#38383d;
+  --accent:#2997ff; --accent-ink:#000000; --accent-soft:#0d2a47;
+  --ok:#4cd964; --ok-soft:#0f2e17; --bad:#ff6b5a; --bad-soft:#3a1511;
+  --code-bg:#0b0b0c; --nav:rgba(22,22,23,.8); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --bg-alt:#111113; --card:#1c1c1e; --card-alt:#232326;
+  --fg:#f5f5f7; --fg-2:#a1a1a6; --line:#38383d;
+  --accent:#2997ff; --accent-ink:#000000; --accent-soft:#0d2a47;
+  --ok:#4cd964; --ok-soft:#0f2e17; --bad:#ff6b5a; --bad-soft:#3a1511;
+  --code-bg:#0b0b0c; --nav:rgba(22,22,23,.8); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-text);font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.025em}
+p{margin:0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+.wrap{max-width:980px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.band{padding-block:88px}
+.band.alt{background:var(--bg-alt)}
+.stack{display:grid;gap:24px}
+
+/* subnav */
+.subnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
+.subnav b{font-family:var(--f-display);font-size:20px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.subnav nav{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none}
+.subnav nav a{color:var(--fg);font-size:13px;white-space:nowrap;opacity:.85}
+.subnav nav a:hover{opacity:1;text-decoration:none;color:var(--accent)}
+@media (max-width:560px){.subnav b{display:none}.subnav .wrap{justify-content:flex-start}}
+
+/* hero */
+.hero{padding-block:96px 72px;text-align:center}
+.eyebrow{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.01em}
+.hero h1{font-size:clamp(56px,11vw,96px);font-weight:700;line-height:1.02;margin-top:10px}
+.hero .lead{font-size:clamp(21px,3vw,28px);line-height:1.25;font-weight:500;color:var(--fg-2);max-width:640px;margin:18px auto 0;letter-spacing:-.02em}
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:56px;text-align:left}
+.journey a{display:grid;gap:4px;padding:18px 18px 20px;background:var(--bg-alt);border-radius:18px;color:var(--fg)}
+.journey a:hover{text-decoration:none;background:var(--accent-soft)}
+.journey small{font-size:12px;font-weight:600;color:var(--fg-2);text-transform:uppercase;letter-spacing:.06em}
+.journey strong{font-family:var(--f-display);font-size:19px;font-weight:600}
+.journey span{font-size:14px;color:var(--fg-2)}
+@media (max-width:760px){.journey{grid-template-columns:repeat(2,1fr)}}
+
+/* section heads */
+.shead{display:grid;gap:12px;margin-bottom:48px;max-width:720px}
+.shead h2{font-size:clamp(36px,6vw,56px);font-weight:700;line-height:1.05}
+.shead p{font-size:21px;color:var(--fg-2);line-height:1.38}
+h3{font-size:24px;font-weight:600;line-height:1.2}
+.muted{color:var(--fg-2)}
+.small{font-size:14px}
+
+/* setup steps */
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;background:var(--card);border-radius:18px;padding:24px;display:grid;gap:6px;align-content:start}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-size:15px;font-weight:600;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);margin-bottom:6px}
+.steps strong{font-size:19px;font-family:var(--f-display);font-weight:600}
+@media (max-width:700px){.steps{grid-template-columns:1fr}}
+kbd{font-family:var(--f-mono);font-size:.85em;padding:1px 7px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;background:var(--card-alt);white-space:nowrap}
+code.i{font-family:var(--f-mono);font-size:.88em;padding:1px 6px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
+
+/* tags anatomy */
+.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.tag{background:var(--bg-alt);border-radius:18px;padding:24px;display:grid;gap:6px}
+.tag .t{font-family:var(--f-mono);font-size:34px;font-weight:600;color:var(--accent);letter-spacing:-.02em}
+.tag b{font-size:15px}
+@media (max-width:700px){.anatomy{grid-template-columns:1fr}}
+
+/* example card: code + result */
+.ex{display:grid;grid-template-columns:1.15fr 1fr;border-radius:22px;overflow:hidden;background:var(--bg-alt)}
+.ex+.ex{margin-top:20px}
+.ex .info{grid-column:1/-1;padding:28px 28px 0;display:grid;gap:8px}
+.ex .info p{max-width:62ch}
+.ex .code,.ex .out{min-width:0;padding:20px 28px 28px}
+.label{font-size:12px;font-weight:600;color:var(--fg-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+pre{margin:0;background:var(--code-bg);color:var(--code-fg);font-family:var(--f-mono);font-size:14px;line-height:1.6;padding:18px 20px;border-radius:14px;overflow-x:auto;tab-size:2}
+.tk{color:var(--c-tag)} .ta{color:var(--c-attr)} .tv{color:var(--c-val)} .tc{color:var(--c-com);font-style:italic}
+.render{background:var(--card);border-radius:14px;padding:16px 20px;font-family:"Times New Roman",Times,serif;font-size:17px;line-height:1.45;color:var(--fg);min-height:100%}
+.render ul,.render ol{margin:.3em 0;padding-left:1.6em}
+.render h1{font-size:28px;font-family:inherit;margin:.2em 0 .4em}
+.render h2{font-size:21px;font-family:inherit;margin:.8em 0 .3em}
+.render p{margin:.4em 0}
+@media (max-width:760px){.ex{grid-template-columns:1fr}.ex .code{padding-bottom:8px}}
+
+/* note */
+.note{display:grid;gap:6px;padding:20px 24px;border-radius:18px;background:var(--accent-soft)}
+.note b{font-family:var(--f-display);font-size:17px}
+.warn{background:var(--bad-soft)}
+.warn b{color:var(--bad)}
+
+table{border-collapse:collapse;width:100%;font-size:15px}
+.tbl{overflow-x:auto;background:var(--card);border-radius:18px;padding:8px 20px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--fg-2);font-weight:600}
+td code{font-family:var(--f-mono);font-size:14px}
+
+/* practice */
+.tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--card);border:1px solid var(--line);flex-wrap:wrap}
+.tabs button{font:inherit;font-size:14px;font-weight:500;border:0;background:transparent;color:var(--fg);padding:8px 16px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg)}
+.task{background:var(--card);border-radius:22px;padding:28px;display:grid;gap:20px}
+.task-head{display:grid;gap:8px}
+.task-head ol{margin:0;padding-left:1.3em;display:grid;gap:4px;color:var(--fg)}
+.play{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.play>div{min-width:0}
+textarea{width:100%;min-height:300px;resize:vertical;background:var(--code-bg);color:var(--code-fg);font-family:var(--f-mono);font-size:14px;line-height:1.6;border:0;border-radius:14px;padding:18px 20px;tab-size:2}
+.play .render{border:1px solid var(--line);min-height:300px}
+@media (max-width:760px){.play{grid-template-columns:1fr}textarea,.play .render{min-height:220px}}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:inherit;font-size:15px;font-weight:500;border:0;border-radius:999px;padding:11px 22px;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checks li{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.checks .dot{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--bg-alt);color:var(--fg-2);margin-top:1px}
+.checks .yes .dot{background:var(--ok);color:#fff}
+.checks .no .dot{background:var(--bad);color:#fff}
+.emmet{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.emmet div{background:var(--card);border-radius:16px;padding:18px 20px;display:grid;gap:4px}
+.emmet code{font-family:var(--f-mono);font-size:17px;font-weight:600;color:var(--accent)}
+@media (max-width:700px){.emmet{grid-template-columns:1fr}}
+
+/* assignment */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.two>*{min-width:0}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.panel{background:var(--bg-alt);border-radius:22px;padding:28px;display:grid;gap:16px}
+.copyrow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.todo{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.todo label{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;cursor:pointer;font-size:16px;border-bottom:1px solid var(--line)}
+.todo li:last-child label{border-bottom:0}
+.todo input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin-top:2px}
+.progress{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.grade td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+
+/* quiz */
+.quiz{display:grid;gap:16px;counter-reset:q}
+.q{background:var(--card);border-radius:20px;padding:24px 24px 20px;display:grid;gap:14px;border:0;margin:0;min-width:0}
+.q legend{counter-increment:q;font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.3;padding:0;display:contents}
+.q .qt{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.3}
+.q .qt::before{content:counter(q) ". ";color:var(--fg-2)}
+.q pre{font-size:13px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opts label{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--bg-alt);cursor:pointer;font-size:15px;border:2px solid transparent;min-width:0}
+.opts label:hover{border-color:var(--line)}
+.opts input{accent-color:var(--accent);flex:none}
+.opts label:has(input:checked){border-color:var(--accent)}
+.opts code{font-family:var(--f-mono);font-size:14px}
+.q.done .opts label.right{border-color:var(--ok);background:var(--ok-soft)}
+.q.done .opts label.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.q .why{display:none;font-size:15px;color:var(--fg-2)}
+.q.done .why{display:block}
+.score{display:grid;gap:8px;text-align:center;padding:40px 24px;border-radius:22px;background:var(--card)}
+.score .big{font-family:var(--f-display);font-size:72px;font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+footer{padding-block:32px;font-size:12px;color:var(--fg-2);border-top:1px solid var(--line)}
+</style>
+<style>
+/* additions for the GitHub edition */
+.commit{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.commit .row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px;color:var(--fg-2)}
+.commit .pill{font-family:var(--f-mono);font-size:13px;padding:3px 10px;border-radius:999px;background:var(--bg-alt);color:var(--fg)}
+.commit .msg{font-family:var(--f-mono);font-size:15px;padding:10px 14px;border-radius:10px;background:var(--bg-alt);border:1px solid var(--line);color:var(--fg);overflow-wrap:anywhere}
+.commit .go{justify-self:start;font-size:14px;font-weight:600;padding:7px 16px;border-radius:8px;background:var(--ok);color:#fff}
+.ex .commit{margin:0 28px 28px}
+@media (max-width:760px){.ex .commit{margin:0 20px 20px}}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:760px){.flow{grid-template-columns:1fr}}
+.flow .commit{background:var(--card)}
+.url{font-family:var(--f-mono);font-size:clamp(14px,2.4vw,19px);padding:16px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line);overflow-wrap:anywhere}
+.url b{color:var(--accent);font-weight:600}
+.quiz .q{background:var(--bg-alt)}
+.quiz .opts label{background:var(--card)}
+.path{font-family:var(--f-mono);font-size:.88em;white-space:normal}
+</style>
+
+<div class="subnav">
+  <div class="wrap">
+    <b>Списки на GitHub</b>
+    <nav aria-label="Етапи уроку">
+      <a href="#start">Підготовка</a>
+      <a href="#commit">Коміт</a>
+      <a href="#learn">Знайомство</a>
+      <a href="#practice">Практика</a>
+      <a href="#task">Завдання</a>
+      <a href="#quiz">Тест</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Урок HTML · Планшет · GitHub Pages · 45 хвилин</p>
+    <h1>Списки.</h1>
+    <p class="lead">Марковані, нумеровані та вкладені. Пишемо код просто в браузері, зберігаємо комітами на GitHub і публікуємо власний сайт.</p>
+    <div class="journey">
+      <a href="#learn"><small>Етап 1</small><strong>Знайомство</strong><span>Приклад разом із комітами</span></a>
+      <a href="#practice"><small>Етап 2</small><strong>Практика</strong><span>3 вправи, 3 коміти</span></a>
+      <a href="#task"><small>Етап 3</small><strong>Рецепт</strong><span>Самостійно на GitHub Pages</span></a>
+      <a href="#quiz"><small>Фініш</small><strong>Тест</strong><span>10 питань</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ПІДГОТОВКА -->
+<section id="start" class="band alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Перед початком</p>
+      <h2>Створи репозиторій.</h2>
+      <p>Репозиторій — це папка твого проєкту на GitHub. Усі файли сайту житимуть у ній.</p>
+    </div>
+    <ol class="steps">
+      <li><strong>Увійди в GitHub</strong><p class="muted">Відкрий <a href="https://github.com" target="_blank" rel="noopener">github.com</a> у браузері (Safari або Chrome, не в застосунку GitHub) і увійди у свій акаунт.</p></li>
+      <li><strong>Новий репозиторій</strong><p class="muted">Натисни <kbd>+</kbd> вгорі праворуч → <kbd>New repository</kbd>. У полі <b>Repository name</b> напиши <code class="i">spysky</code>.</p></li>
+      <li><strong>Налаштуй і створи</strong><p class="muted">Обери <kbd>Public</kbd> і постав галочку <kbd>Add a README file</kbd>. Натисни зелену кнопку <kbd>Create repository</kbd>.</p></li>
+      <li><strong>Увімкни GitHub Pages</strong><p class="muted"><kbd>Settings</kbd> → ліворуч <kbd>Pages</kbd>. У <b>Branch</b> обери <kbd>main</kbd> і <kbd>/ (root)</kbd> → <kbd>Save</kbd>.</p></li>
+    </ol>
+    <div class="stack" style="margin-top:32px">
+      <p class="muted">За 1–2 хвилини твій сайт з'явиться за адресою:</p>
+      <div class="url">https://<b>твій-логін</b>.github.io/spysky/</div>
+      <div class="note"><b>Порада для планшета</b><p>Тримай планшет горизонтально. Якщо є чохол-клавіатура, підключи її, бо так зручніше набирати знаки <code class="i">&lt;</code> <code class="i">&gt;</code> <code class="i">/</code>. На екранній клавіатурі вони ховаються за кнопкою <kbd>123</kbd> → <kbd>#+=</kbd>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЯК ЗРОБИТИ КОМІТ -->
+<section id="commit" class="band">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Головне вміння уроку</p>
+      <h2>Що таке коміт.</h2>
+      <p>Коміт — це збережена версія твоїх змін із коротким підписом. GitHub пам'ятає кожен коміт, тому завжди видно, що і коли ти змінив.</p>
+    </div>
+
+    <div class="tbl" style="margin-bottom:32px">
+      <table>
+        <thead><tr><th>Що потрібно</th><th>Куди натиснути</th></tr></thead>
+        <tbody>
+          <tr><td>Створити новий файл</td><td><kbd>Add file</kbd> → <kbd>Create new file</kbd> → ввести назву, наприклад <code>index.html</code></td></tr>
+          <tr><td>Змінити наявний файл</td><td>Відкрити файл → іконка олівця ✎ (<b>Edit this file</b>)</td></tr>
+          <tr><td>Зберегти зміни</td><td>Зелена кнопка <kbd>Commit changes…</kbd> → написати підпис → <kbd>Commit changes</kbd></td></tr>
+          <tr><td>Подивитися історію</td><td>На головній сторінці репозиторію натиснути <kbd>Commits</kbd> (годинник зі стрілкою)</td></tr>
+          <tr><td>Перевірити, чи оновився сайт</td><td>Вкладка <kbd>Actions</kbd>: зелена галочка ✓ означає, що сайт оновлено</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-bottom:16px">Як виглядає вікно коміту</h3>
+    <div class="commit" style="max-width:560px">
+      <div class="row"><span>Commit message</span></div>
+      <div class="msg">Додано маркований список</div>
+      <div class="row"><span>◉ Commit directly to the <span class="pill">main</span> branch</span></div>
+      <span class="go">Commit changes</span>
+    </div>
+    <div class="note" style="margin-top:24px"><b>Правило гарного підпису</b><p>Пиши коротко, що саме ти зробив: «Додано список інгредієнтів», «Виправлено вкладений список». Підпис «123» або «зміни» нічого не пояснює.</p></div>
+  </div>
+</section>
+
+<!-- ЕТАП 1 -->
+<section id="learn" class="band alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Етап 1 · Знайомство з прикладом</p>
+      <h2>Три теги. Три коміти.</h2>
+      <p>Список у HTML складається з «коробки» (самого списку) і «речей у коробці» (пунктів). Набирай кожен приклад у своєму репозиторії і зберігай комітом.</p>
+    </div>
+
+    <div class="anatomy">
+      <div class="tag" style="background:var(--card)"><span class="t">&lt;ul&gt;</span><b>unordered list</b><p class="muted small">Маркований список. Порядок не важливий: покупки, інгредієнти, хобі.</p></div>
+      <div class="tag" style="background:var(--card)"><span class="t">&lt;ol&gt;</span><b>ordered list</b><p class="muted small">Нумерований список. Порядок важливий: кроки, рейтинг, розклад.</p></div>
+      <div class="tag" style="background:var(--card)"><span class="t">&lt;li&gt;</span><b>list item</b><p class="muted small">Один пункт списку. Живе тільки всередині <code class="i">ul</code> або <code class="i">ol</code>.</p></div>
+    </div>
+
+    <div class="stack" style="margin-bottom:24px">
+      <h3>Крок 0. Створи файл index.html</h3>
+      <p class="muted"><kbd>Add file</kbd> → <kbd>Create new file</kbd> → назва <code class="i">index.html</code>. Встав каркас сторінки і зроби перший коміт. Усі приклади нижче дописуй всередину <code class="i">&lt;body&gt;</code>.</p>
+    </div>
+    <article class="ex" style="background:var(--card)">
+      <div class="info"><h3>Каркас сторінки</h3><p class="muted">На планшеті немає Emmet, тому каркас набираємо вручну один раз або копіюємо кнопкою.</p></div>
+      <div class="code" style="grid-column:1/-1"><div class="copyrow"><p class="label">Код файлу index.html</p><button class="btn ghost copy" data-copy="base" style="padding:7px 16px;font-size:14px">Скопіювати</button></div><pre data-src="base"></pre></div>
+      <div class="commit" style="grid-column:1/-1"><div class="row"><span>Файл</span><span class="pill">index.html</span><span>Коміт №1</span></div><div class="msg">Створено сторінку index.html</div></div>
+    </article>
+
+    <article class="ex" style="background:var(--card)">
+      <div class="info"><h3>Маркований список</h3><p class="muted">Кожен пункт позначається крапкою. Використовуй, коли порядок не має значення.</p></div>
+      <div class="code"><p class="label">Допиши в body</p><pre data-src="ex1"></pre></div>
+      <div class="out"><p class="label">Результат на сайті</p><div class="render" data-render="ex1" style="background:var(--bg-alt)"></div></div>
+      <div class="commit" style="grid-column:1/-1"><div class="row"><span>Файл</span><span class="pill">index.html</span><span>Коміт №2</span></div><div class="msg">Додано маркований список</div></div>
+    </article>
+
+    <article class="ex" style="background:var(--card)">
+      <div class="info"><h3>Нумерований список</h3><p class="muted">Браузер сам рахує 1, 2, 3. Якщо поміняти пункти місцями, номери перерахуються автоматично.</p></div>
+      <div class="code"><p class="label">Допиши в body</p><pre data-src="ex2"></pre></div>
+      <div class="out"><p class="label">Результат на сайті</p><div class="render" data-render="ex2" style="background:var(--bg-alt)"></div></div>
+      <div class="commit" style="grid-column:1/-1"><div class="row"><span>Файл</span><span class="pill">index.html</span><span>Коміт №3</span></div><div class="msg">Додано нумерований список</div></div>
+    </article>
+
+    <article class="ex" style="background:var(--card)">
+      <div class="info"><h3>Вкладений список</h3><p class="muted">Список усередині списку. Новий <code class="i">&lt;ul&gt;</code> або <code class="i">&lt;ol&gt;</code> ставиться <b>всередину</b> пункту <code class="i">&lt;li&gt;</code>, перед його закривальним тегом. Відступи пробілами допомагають бачити рівні.</p></div>
+      <div class="code"><p class="label">Допиши в body</p><pre data-src="ex3"></pre></div>
+      <div class="out"><p class="label">Результат на сайті</p><div class="render" data-render="ex3" style="background:var(--bg-alt)"></div></div>
+      <div class="commit" style="grid-column:1/-1"><div class="row"><span>Файл</span><span class="pill">index.html</span><span>Коміт №4</span></div><div class="msg">Додано вкладений список</div></div>
+    </article>
+
+    <div class="stack" style="margin-top:32px">
+      <div class="note"><b>Перевір себе</b><p>Відкрий <span class="path">https://твій-логін.github.io/spysky/</span>. Там мають бути всі три списки. Якщо сайт ще старий, зачекай хвилину й онови сторінку. А в <kbd>Commits</kbd> має бути 4 нові коміти.</p></div>
+    </div>
+
+    <div class="stack" style="margin-top:48px">
+      <h3>Налаштування нумерованого списку</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Атрибут</th><th>Що робить</th><th>Приклад</th></tr></thead>
+          <tbody>
+            <tr><td><code>type="1"</code></td><td>Арабські цифри (звичайно)</td><td>1, 2, 3</td></tr>
+            <tr><td><code>type="A"</code></td><td>Великі літери</td><td>A, B, C</td></tr>
+            <tr><td><code>type="a"</code></td><td>Малі літери</td><td>a, b, c</td></tr>
+            <tr><td><code>type="I"</code></td><td>Римські цифри</td><td>I, II, III</td></tr>
+            <tr><td><code>start="5"</code></td><td>Почати рахунок з 5</td><td>5, 6, 7</td></tr>
+            <tr><td><code>reversed</code></td><td>Рахувати у зворотному порядку</td><td>3, 2, 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note warn"><b>Типова помилка</b><p>Текст прямо всередині <code class="i">&lt;ul&gt;</code> без <code class="i">&lt;li&gt;</code>. У списку можуть лежати тільки пункти <code class="i">&lt;li&gt;</code>, а вже в них будь-що: текст, посилання, інший список.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЕТАП 2 -->
+<section id="practice" class="band">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Етап 2 · Практика</p>
+      <h2>Спробуй сам.</h2>
+      <p>Спочатку потренуйся тут: пиши ліворуч, результат з'являється праворуч. Коли «Перевірити» покаже всі галочки, перенеси код на GitHub і зроби коміт.</p>
+    </div>
+
+    <div class="stack">
+      <div class="tabs" role="tablist" aria-label="Вправи">
+        <button role="tab" id="t1" aria-selected="true" data-ex="0">Вправа 1</button>
+        <button role="tab" id="t2" aria-selected="false" data-ex="1">Вправа 2</button>
+        <button role="tab" id="t3" aria-selected="false" data-ex="2">Вправа 3</button>
+      </div>
+
+      <div class="task" role="tabpanel" style="background:var(--bg-alt)">
+        <div class="task-head">
+          <h3 id="taskTitle"></h3>
+          <ol id="taskSteps"></ol>
+        </div>
+        <div class="play">
+          <div><p class="label">Твій код</p><textarea id="editor" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Редактор коду"></textarea></div>
+          <div><p class="label">Результат</p><div class="render" id="preview"></div></div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="checkBtn">Перевірити</button>
+          <button class="btn ghost" id="copyEx">Скопіювати мій код</button>
+          <button class="btn ghost" id="resetBtn">Почати заново</button>
+        </div>
+        <ul class="checks" id="checks"></ul>
+        <div class="commit" id="exCommit"></div>
+      </div>
+
+      <h3 style="margin-top:32px">Шлях кожної вправи</h3>
+      <div class="flow">
+        <div class="commit"><div class="row"><span class="pill">1</span><span>Тренуйся тут</span></div><p class="small muted">Пиши код і тисни «Перевірити», доки всі пункти не стануть зеленими.</p></div>
+        <div class="commit"><div class="row"><span class="pill">2</span><span>Створи файл</span></div><p class="small muted"><kbd>Add file</kbd> → <kbd>Create new file</kbd>. Назву файлу підказано у вправі. Встав код.</p></div>
+        <div class="commit"><div class="row"><span class="pill">3</span><span>Зроби коміт</span></div><p class="small muted">Підпиши коміт назвою вправи і подивись результат за адресою сайту.</p></div>
+      </div>
+      <div class="note warn"><b>Екранна клавіатура «виправляє» код</b><p>Планшет може сам ставити велику літеру чи замінювати лапки на «ялинки». Вимкни в налаштуваннях клавіатури <b>автовиправлення</b> та <b>розумну пунктуацію</b>, або перевіряй код уважно перед комітом.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЕТАП 3 -->
+<section id="task" class="band alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Етап 3 · Самостійна робота</p>
+      <h2>Твій рецепт онлайн.</h2>
+      <p>У тому самому репозиторії створи файл <code class="i">recipe.html</code> з рецептом улюбленої страви. Працюй невеликими кроками і після кожного роби коміт.</p>
+    </div>
+
+    <div class="stack" style="margin-bottom:32px">
+      <h3>План комітів</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>№</th><th>Що зробити</th><th>Підпис коміту</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Створити <code>recipe.html</code>, вставити шаблон, написати назву страви та опис</td><td><code>Створено сторінку рецепта</code></td></tr>
+            <tr><td>2</td><td>Заповнити маркований список інгредієнтів із вкладеним списком</td><td><code>Додано інгредієнти</code></td></tr>
+            <tr><td>3</td><td>Заповнити нумерований список кроків приготування</td><td><code>Додано кроки приготування</code></td></tr>
+            <tr><td>4</td><td>В <code>index.html</code> додати посилання на рецепт (код нижче)</td><td><code>Додано посилання на рецепт</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="panel" style="background:var(--card)">
+        <div class="copyrow"><p class="label" style="margin:0">Шаблон recipe.html</p><button class="btn ghost copy" data-copy="tpl" style="padding:7px 16px;font-size:14px">Скопіювати</button></div>
+        <pre data-src="tpl"></pre>
+        <p class="label" style="margin:8px 0 0">Посилання для index.html</p>
+        <pre data-src="link"></pre>
+      </div>
+      <div class="stack">
+        <div class="panel" style="background:var(--card)">
+          <p class="label" style="margin:0">Чекліст. Позначай, що вже зроблено</p>
+          <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+          <ul class="todo" id="todo">
+            <li><label><input type="checkbox" id="g1">Файл <code class="i">recipe.html</code> створено в репозиторії <code class="i">spysky</code></label></li>
+            <li><label><input type="checkbox" id="g2">Заголовок <code class="i">h1</code> з назвою страви і короткий опис у <code class="i">p</code></label></li>
+            <li><label><input type="checkbox" id="g3">Маркований список інгредієнтів, мінімум 5 пунктів</label></li>
+            <li><label><input type="checkbox" id="g4">Нумерований список кроків, мінімум 4 кроки</label></li>
+            <li><label><input type="checkbox" id="g5">Хоча б один вкладений список</label></li>
+            <li><label><input type="checkbox" id="g6">Щонайменше 4 коміти з зрозумілими підписами</label></li>
+            <li><label><input type="checkbox" id="g7">На головній сторінці сайту є посилання на рецепт</label></li>
+            <li><label><input type="checkbox" id="g8">Рецепт відкривається за адресою …github.io/spysky/recipe.html</label></li>
+          </ul>
+          <p class="muted small" id="todoNote">Виконано 0 з 8</p>
+        </div>
+        <div class="note"><b>Як здати роботу</b><p>Надішли вчителю два посилання: на сайт <span class="path">https://твій-логін.github.io/spysky/recipe.html</span> і на репозиторій <span class="path">https://github.com/твій-логін/spysky</span>.</p></div>
+      </div>
+    </div>
+
+    <article class="ex" style="margin-top:48px;background:var(--card)">
+      <div class="info"><h3>Приклад готової роботи</h3><p class="muted">Ось як може виглядати рецепт. Не копіюй його, а придумай свій.</p></div>
+      <div class="code"><p class="label">Частина коду (body)</p><pre data-src="sample"></pre></div>
+      <div class="out"><p class="label">Результат на сайті</p><div class="render" data-render="sample" style="background:var(--bg-alt)"></div></div>
+    </article>
+
+    <div class="stack" style="margin-top:48px">
+      <h3>Як оцінюється робота</h3>
+      <div class="tbl">
+        <table class="grade">
+          <thead><tr><th>Критерій</th><th>Бали</th></tr></thead>
+          <tbody>
+            <tr><td>Структура сторінки: заголовок <code>h1</code>, опис, підзаголовки <code>h2</code></td><td>1</td></tr>
+            <tr><td>Маркований список інгредієнтів (≥ 5 пунктів)</td><td>2</td></tr>
+            <tr><td>Нумерований список кроків (≥ 4 кроки)</td><td>2</td></tr>
+            <tr><td>Правильно оформлений вкладений список</td><td>2</td></tr>
+            <tr><td>Усі теги закриті, акуратні відступи в коді</td><td>1</td></tr>
+            <tr><td>Щонайменше 4 коміти зі зрозумілими підписами</td><td>2</td></tr>
+            <tr><td>Сайт працює на GitHub Pages, є посилання з index.html</td><td>2</td></tr>
+            <tr><td><b>Разом</b></td><td>12</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ТЕСТ -->
+<section id="quiz" class="band">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Фініш · Перевір себе</p>
+      <h2>10 питань.</h2>
+      <p>Сім питань про списки і три про GitHub. Обери одну відповідь у кожному питанні, а потім натисни «Перевірити тест» внизу.</p>
+    </div>
+    <form class="quiz" id="quizForm"></form>
+    <div class="actions" style="margin-top:24px">
+      <button class="btn" id="quizBtn" form="quizForm" type="submit">Перевірити тест</button>
+      <button class="btn ghost" id="quizReset" type="button">Пройти ще раз</button>
+    </div>
+    <div class="score" id="score" hidden style="margin-top:24px;background:var(--bg-alt)">
+      <div class="big" id="scoreNum">0 / 10</div>
+      <p class="muted" id="scoreMsg"></p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Урок «Списки в HTML» · інформатика · робота на планшеті з GitHub і GitHub Pages</div></footer>
+
+<!-- ======= Джерела коду ======= -->
+<script type="text/plain" id="base"><!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Мої списки</title>
+</head>
+<body>
+  <h1>Мої списки</h1>
+
+</body>
+</html></script>
+
+<script type="text/plain" id="ex1"><h2>Мої хобі</h2>
+<ul>
+  <li>Футбол</li>
+  <li>Малювання</li>
+  <li>Програмування</li>
+</ul></script>
+
+<script type="text/plain" id="ex2"><h2>Як почистити зуби</h2>
+<ol>
+  <li>Вичавити пасту на щітку</li>
+  <li>Чистити 2 хвилини</li>
+  <li>Прополоскати рот</li>
+</ol></script>
+
+<script type="text/plain" id="ex3"><h2>Шкільний рюкзак</h2>
+<ul>
+  <li>Зошити
+    <ul>
+      <li>Математика</li>
+      <li>Українська мова</li>
+    </ul>
+  </li>
+  <li>Пенал
+    <ol>
+      <li>Ручка</li>
+      <li>Олівець</li>
+    </ol>
+  </li>
+  <li>Обід</li>
+</ul></script>
+
+<script type="text/plain" id="tpl"><!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Рецепт: …</title>
+</head>
+<body>
+  <!-- 1. Назва страви -->
+  <h1>…</h1>
+
+  <!-- 2. Короткий опис -->
+  <p>…</p>
+
+  <!-- 3. Інгредієнти: маркований список -->
+  <h2>Інгредієнти</h2>
+  <ul>
+    <li>Для …
+      <ul>
+        <li>…</li>
+        <li>…</li>
+      </ul>
+    </li>
+    <li>…</li>
+    <li>…</li>
+  </ul>
+
+  <!-- 4. Приготування: нумерований список -->
+  <h2>Приготування</h2>
+  <ol>
+    <li>…</li>
+    <li>…</li>
+    <li>…
+      <ul>
+        <li>Порада: …</li>
+      </ul>
+    </li>
+    <li>…</li>
+  </ol>
+
+  <p><a href="index.html">← На головну</a></p>
+</body>
+</html></script>
+
+<script type="text/plain" id="link"><p><a href="recipe.html">Мій рецепт →</a></p></script>
+
+<script type="text/plain" id="sample"><h1>Сирники</h1>
+<p>Сніданок на 4 порції. Час: 25 хвилин.</p>
+
+<h2>Інгредієнти</h2>
+<ul>
+  <li>Сир кисломолочний — 400 г</li>
+  <li>Яйце — 1 шт.</li>
+  <li>Цукор — 2 ст. л.</li>
+  <li>Борошно — 3 ст. л.</li>
+  <li>Для подачі
+    <ul>
+      <li>Сметана</li>
+      <li>Ягоди</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Приготування</h2>
+<ol>
+  <li>Розім'яти сир виделкою</li>
+  <li>Додати яйце, цукор і борошно</li>
+  <li>Сформувати сирники
+    <ul>
+      <li>Порада: змочи руки водою</li>
+    </ul>
+  </li>
+  <li>Обсмажити по 3 хвилини з кожного боку</li>
+</ol></script>
+
+<script>
+(function(){
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function hl(src){
+    let s = esc(src);
+    s = s.replace(/&lt;!--[\s\S]*?--&gt;/g, m => '\u0001' + m + '\u0002');
+    s = s.replace(/(&lt;\/?)([a-zA-Z!][a-zA-Z0-9]*)([^&]*?)(\/?&gt;)/g, (m,a,t,attrs,b) => {
+      attrs = attrs.replace(/([a-zA-Z-]+)(=)("[^"]*")/g,'<span class="ta">$1</span>$2<span class="tv">$3</span>');
+      return '<span class="tk">'+a+t+'</span>'+attrs+'<span class="tk">'+b+'</span>';
+    });
+    return s.replace(/\u0001/g,'<span class="tc">').replace(/\u0002/g,'</span>');
+  }
+  const src = id => document.getElementById(id).textContent.replace(/^\n/,'');
+  document.querySelectorAll('pre[data-src]').forEach(p => p.innerHTML = hl(src(p.dataset.src)));
+  document.querySelectorAll('[data-render]').forEach(d => d.innerHTML = src(d.dataset.render));
+
+  function copyText(btn, text, pre){
+    const label = btn.textContent;
+    const done = ()=>{ btn.textContent='Скопійовано'; setTimeout(()=>btn.textContent=label,1800); };
+    const fallback = ()=>{ if(pre){ const r=document.createRange(); r.selectNodeContents(pre); const s=getSelection(); s.removeAllRanges(); s.addRange(r); } btn.textContent='Виділено, скопіюй вручну'; setTimeout(()=>btn.textContent=label,2500); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch(e){ fallback(); }
+  }
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', ()=>copyText(b, src(b.dataset.copy), document.querySelector('pre[data-src="'+b.dataset.copy+'"]'))));
+
+  // ---------- Практика ----------
+  const tasks = [
+    { title:'Вправа 1. Маркований список', file:'vprava1.html', msg:'Вправа 1: маркований список',
+      steps:['Напиши заголовок <code class="i">&lt;h2&gt;Мої улюблені фрукти&lt;/h2&gt;</code>','Створи маркований список <code class="i">&lt;ul&gt;</code>','Додай щонайменше 5 пунктів <code class="i">&lt;li&gt;</code>'],
+      start:'<h2>Мої улюблені фрукти</h2>\n<ul>\n  <li>Яблуко</li>\n  \n</ul>',
+      checks:[
+        ['Є заголовок h2', d => d.querySelector('h2')],
+        ['Є маркований список ul', d => d.querySelector('ul')],
+        ['У списку щонайменше 5 пунктів', d => { const u=d.querySelector('ul'); return u && u.querySelectorAll(':scope > li').length>=5; }]
+      ]},
+    { title:'Вправа 2. Нумерований список', file:'vprava2.html', msg:'Вправа 2: нумерований список',
+      steps:['Склади розклад свого ранку в нумерованому списку <code class="i">&lt;ol&gt;</code>','Додай щонайменше 4 кроки','Зроби нумерацію великими літерами: <code class="i">type="A"</code>'],
+      start:'<h2>Мій ранок</h2>\n<ol>\n  <li>Прокинутися</li>\n  \n</ol>',
+      checks:[
+        ['Є нумерований список ol', d => d.querySelector('ol')],
+        ['У списку щонайменше 4 кроки', d => { const o=d.querySelector('ol'); return o && o.querySelectorAll(':scope > li').length>=4; }],
+        ['Нумерація літерами (type="A")', d => { const o=d.querySelector('ol'); return o && o.getAttribute('type')==='A'; }]
+      ]},
+    { title:'Вправа 3. Вкладений список', file:'vprava3.html', msg:'Вправа 3: вкладений список',
+      steps:['Склади список днів тижня: Понеділок, Вівторок, Середа','Усередині кожного дня зроби нумерований список уроків','Пам\'ятай: вкладений список стоїть всередині <code class="i">&lt;li&gt;</code>, перед <code class="i">&lt;/li&gt;</code>'],
+      start:'<h2>Мій розклад</h2>\n<ul>\n  <li>Понеділок\n    <ol>\n      <li>Математика</li>\n    </ol>\n  </li>\n  <li>Вівторок</li>\n  \n</ul>',
+      checks:[
+        ['Є зовнішній маркований список із 3+ днями', d => { const u=d.querySelector('ul'); return u && u.querySelectorAll(':scope > li').length>=3; }],
+        ['Вкладені списки стоять всередині li', d => d.querySelectorAll('ul > li > ol, ul > li > ul').length>=1],
+        ['Кожен день має свій вкладений список', d => { const u=d.querySelector('ul'); if(!u) return false; const li=[...u.querySelectorAll(':scope > li')]; return li.length>=3 && li.every(l=>l.querySelector(':scope > ol, :scope > ul')); }],
+        ['Немає тексту прямо в ul/ol без li', d => ![...d.querySelectorAll('ul,ol')].some(l=>[...l.childNodes].some(n=>(n.nodeType===3&&n.textContent.trim())||(n.nodeType===1&&n.tagName!=='LI')))]
+      ]}
+  ];
+  const ed = document.getElementById('editor'), pv = document.getElementById('preview'),
+        ck = document.getElementById('checks'), tabs = document.querySelectorAll('.tabs button'),
+        cm = document.getElementById('exCommit');
+  let cur = 0; const drafts = tasks.map(t => t.start);
+  function draw(){ pv.innerHTML = ed.value; }
+  function load(i){
+    cur = i; const t = tasks[i];
+    tabs.forEach((b,j)=>b.setAttribute('aria-selected', j===i));
+    document.getElementById('taskTitle').textContent = t.title;
+    document.getElementById('taskSteps').innerHTML = t.steps.map(s=>'<li>'+s+'</li>').join('');
+    cm.innerHTML = '<div class="row"><span>Після перевірки створи файл</span><span class="pill">'+t.file+'</span><span>і зроби коміт</span></div><div class="msg">'+t.msg+'</div>';
+    ed.value = drafts[i]; draw();
+    ck.innerHTML = t.checks.map(c=>'<li><span class="dot">·</span>'+c[0]+'</li>').join('');
+  }
+  ed.addEventListener('input', ()=>{ drafts[cur]=ed.value; draw(); });
+  ed.addEventListener('keydown', e=>{
+    if(e.key==='Tab'){ e.preventDefault(); const s=ed.selectionStart; ed.setRangeText('  ', s, ed.selectionEnd, 'end'); drafts[cur]=ed.value; draw(); }
+  });
+  tabs.forEach(b=>b.addEventListener('click', ()=>load(+b.dataset.ex)));
+  document.getElementById('resetBtn').addEventListener('click', ()=>{ drafts[cur]=tasks[cur].start; load(cur); });
+  document.getElementById('copyEx').addEventListener('click', e=>{
+    const b=e.currentTarget, text=ed.value, label=b.textContent;
+    const fb=()=>{ ed.focus(); ed.select(); b.textContent='Виділено, скопіюй вручну'; setTimeout(()=>b.textContent=label,2500); };
+    try{ navigator.clipboard.writeText(text).then(()=>{ b.textContent='Скопійовано'; setTimeout(()=>b.textContent=label,1800); }, fb); }catch(err){ fb(); }
+  });
+  document.getElementById('checkBtn').addEventListener('click', ()=>{
+    const res = tasks[cur].checks.map(c=>{ let ok=false; try{ ok=!!c[1](pv); }catch(e){} return [c[0],ok]; });
+    const all = res.every(r=>r[1]);
+    ck.innerHTML = res.map(r=>'<li class="'+(r[1]?'yes':'no')+'"><span class="dot">'+(r[1]?'✓':'✕')+'</span>'+r[0]+'</li>').join('')
+      + (all ? '<li class="yes"><span class="dot">★</span><b>Чудово! Тепер перенеси код на GitHub і зроби коміт.</b></li>' : '');
+  });
+  load(0);
+
+  // ---------- Чекліст ----------
+  const boxes = [...document.querySelectorAll('#todo input')];
+  let saved = {}; try{ saved = JSON.parse(localStorage.getItem('recipe-gh-todo')||'{}'); }catch(e){}
+  function upd(){
+    const n = boxes.filter(b=>b.checked).length;
+    document.getElementById('bar').style.width = (n/boxes.length*100)+'%';
+    document.getElementById('todoNote').textContent = n===boxes.length ? 'Усе готово! Надсилай посилання вчителю.' : 'Виконано '+n+' з '+boxes.length;
+  }
+  boxes.forEach(b=>{ b.checked=!!saved[b.id]; b.addEventListener('change',()=>{ saved[b.id]=b.checked; try{ localStorage.setItem('recipe-gh-todo',JSON.stringify(saved)); }catch(e){} upd(); }); });
+  upd();
+
+  // ---------- Тест ----------
+  const Q = [
+    { q:'Який тег створює маркований список?', o:['<ol>','<ul>','<li>','<list>'], a:1, w:'ul (unordered list) — невпорядкований, маркований список.'},
+    { q:'Який тег створює нумерований список?', o:['<ul>','<nl>','<ol>','<num>'], a:2, w:'ol (ordered list) — впорядкований, нумерований список.'},
+    { q:'Яким тегом позначається один пункт будь-якого списку?', o:['<li>','<item>','<p>','<dot>'], a:0, w:'li (list item) — пункт списку і в ul, і в ol.'},
+    { q:'Що не так у цьому коді?', code:'<ul>\n  Молоко\n  Хліб\n</ul>', o:['Треба писати <ol>','Текст має бути в тегах <li>','Не вистачає <br>','Усе правильно'], a:1, w:'Усередині ul/ol можуть стояти тільки пункти li.'},
+    { q:'Де правильно розміщувати вкладений список?', o:['Після </ul>','Між двома <li> окремо','Усередині <li>, перед </li>','У тезі <head>'], a:2, w:'Вкладений список — частина пункту, тому стоїть усередині li.'},
+    { q:'Що покаже браузер для <ol type="A"> із трьома пунктами?', o:['1, 2, 3','I, II, III','A, B, C','a, b, c'], a:2, w:'type="A" — нумерація великими латинськими літерами.'},
+    { q:'Скільки рівнів вкладеності в цьому коді?', code:'<ol>\n  <li>Тісто\n    <ul>\n      <li>Борошно</li>\n    </ul>\n  </li>\n</ol>', o:['Один','Два','Три','Чотири'], a:1, w:'Перший рівень — ol, другий — ul усередині пункту «Тісто».'},
+    { q:'Що таке коміт на GitHub?', o:['Видалення файлу','Збережена версія змін із підписом','Назва репозиторію','Коментар у коді HTML'], a:1, w:'Коміт зберігає зміни і підписує їх, тому видно історію роботи.'},
+    { q:'Який підпис коміту найкращий?', o:['зміни','123','Додано список інгредієнтів','ааааа'], a:2, w:'Гарний підпис коротко пояснює, що саме змінилось.'},
+    { q:'За якою адресою відкриється файл recipe.html з репозиторію spysky на GitHub Pages?', o:['github.com/spysky/recipe','логін.github.io/spysky/recipe.html','spysky.com/recipe.html','github.io/recipe.html'], a:1, w:'Адреса сайту: логін.github.io/назва-репозиторію/назва-файлу.'}
+  ];
+  const form = document.getElementById('quizForm');
+  form.innerHTML = Q.map((x,i)=>
+    '<fieldset class="q" id="q'+i+'"><legend><span class="qt">'+esc(x.q)+'</span></legend>'
+    + (x.code ? '<pre>'+hl(x.code)+'</pre>' : '')
+    + '<div class="opts">' + x.o.map((o,j)=>'<label><input type="radio" name="q'+i+'" id="q'+i+'o'+j+'" value="'+j+'"><code>'+esc(o)+'</code></label>').join('') + '</div>'
+    + '<p class="why">'+esc(x.w)+'</p></fieldset>'
+  ).join('');
+  form.querySelectorAll('.opts code').forEach(c=>{ if(!/[<>=*\/.]/.test(c.textContent)){ const s=document.createElement('span'); s.textContent=c.textContent; c.replaceWith(s);} });
+
+  form.addEventListener('submit', e=>{
+    e.preventDefault(); let n=0;
+    Q.forEach((x,i)=>{
+      const fs = document.getElementById('q'+i); fs.classList.add('done');
+      const labels = fs.querySelectorAll('label');
+      labels.forEach((l,j)=>{ l.classList.remove('right','wrong'); if(j===x.a) l.classList.add('right'); });
+      const sel = fs.querySelector('input:checked');
+      if(sel){ if(+sel.value===x.a) n++; else labels[+sel.value].classList.add('wrong'); }
+    });
+    const sc = document.getElementById('score'); sc.hidden=false;
+    document.getElementById('scoreNum').textContent = n+' / 10';
+    document.getElementById('scoreMsg').textContent = n===10 ? 'Ідеально! Ти справжній майстер списків і комітів.' : n>=8 ? 'Дуже добре! Переглянь пояснення до помилок.' : n>=5 ? 'Непогано. Повернись до етапу «Знайомство» і спробуй ще раз.' : 'Перечитай урок і пройди тест ще раз. У тебе вийде!';
+    sc.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('quizReset').addEventListener('click', ()=>{
+    form.reset(); form.querySelectorAll('.q').forEach(q=>q.classList.remove('done'));
+    form.querySelectorAll('label').forEach(l=>l.classList.remove('right','wrong'));
+    document.getElementById('score').hidden=true;
+    document.getElementById('q0').scrollIntoView({behavior:'smooth'});
+  });
+})();
+</script>
+
+</body></html>
